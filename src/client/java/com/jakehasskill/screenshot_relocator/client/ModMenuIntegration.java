@@ -20,9 +20,7 @@ public class ModMenuIntegration implements ModMenuApi{
             general.addEntry(entryBuilder.startStrField(Text.literal("Screenshot Folder Path"), ConfigManager.config.customScreenshotPath)
                     .setDefaultValue("")
                     .setTooltip(Text.literal("Absolute path for where screenshots are saved."))
-                    .setSaveConsumer(newValue -> {
-                        ConfigManager.config.customScreenshotPath = newValue;
-                    })
+                    .setSaveConsumer(newValue -> ConfigManager.config.customScreenshotPath = newValue)
                     .build());
 
             builder.setSavingRunnable(ConfigManager::saveConfig);

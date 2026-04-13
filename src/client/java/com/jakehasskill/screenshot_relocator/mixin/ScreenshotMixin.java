@@ -1,7 +1,6 @@
 package com.jakehasskill.screenshot_relocator.mixin;
 
 import com.jakehasskill.screenshot_relocator.client.ConfigManager;
-import com.jakehasskill.screenshot_relocator.client.ScreenshotRelocatorClient;
 import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.Mixin;
