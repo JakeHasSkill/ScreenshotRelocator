@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "screenshot_relocator",
+  "version": "${version}",
+  "name": "Screenshot Relocator",
+  "description": "Changes the save location for screenshots.",
+  "authors": ["Jacob Haskell"],
+  "contact": {
+    "sources": "https://github.com/JakeHasSkill/ScreenshotRelocator",
+    "issues": "https://github.com/JakeHasSkill/ScreenshotRelocator/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/screenshot_relocator/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.jakehasskill.screenshot_relocator.client.ScreenshotRelocatorClient"
+    ],
+    "modmenu": [
+      "com.jakehasskill.screenshot_relocator.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "screenshot_relocator.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
