@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.jakehasskill.screenshot_relocator.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ScreenshotMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
