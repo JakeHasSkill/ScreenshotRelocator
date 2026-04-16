@@ -14,7 +14,7 @@ import java.io.File;
 public class ScreenshotMixin {
     @Inject(method = "getScreenshotFilename", at = @At("HEAD"), cancellable = true)
     private static void redirectScreenshotFolder(File directory, CallbackInfoReturnable<File> cir) {
-        String customPath = ConfigManager.config.customScreenshotPath;
+        String customPath = ConfigManager.getEffectivePath();
         File customDir = new File(customPath);
 
         if (!customDir.exists()) {
