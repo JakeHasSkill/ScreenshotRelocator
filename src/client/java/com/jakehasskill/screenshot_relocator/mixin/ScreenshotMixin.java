@@ -1,7 +1,7 @@
 package com.jakehasskill.screenshot_relocator.mixin;
 
 import com.jakehasskill.screenshot_relocator.client.ConfigManager;
-import net.minecraft.client.util.ScreenshotRecorder;
+import net.minecraft.client.Screenshot;
 import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -10,9 +10,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.io.File;
 
-@Mixin(ScreenshotRecorder.class)
+@Mixin(Screenshot.class)
 public class ScreenshotMixin {
-    @Inject(method = "getScreenshotFilename", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getFile", at = @At("HEAD"), cancellable = true)
     private static void redirectScreenshotFolder(File directory, CallbackInfoReturnable<File> cir) {
         String customPath = ConfigManager.getEffectivePath();
         File customDir = new File(customPath);
@@ -21,7 +21,7 @@ public class ScreenshotMixin {
             customDir.mkdirs();
         }
 
-        String time = Util.getFormattedCurrentTime();
+        String time = Util.getFilenameFormattedDateTime();
         int i = 1;
         File file;
         while ((file = new File(customDir, time + (i == 1 ? "" : "_" + i) + ".png")).exists()) {

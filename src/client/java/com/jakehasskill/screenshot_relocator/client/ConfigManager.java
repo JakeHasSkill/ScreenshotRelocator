@@ -7,7 +7,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Objects;
 
 public class ConfigManager {
     private static final Path CONFIG_FILE = FabricLoader.getInstance().getConfigDir().resolve("screenshot_relocator.json");
@@ -26,10 +25,6 @@ public class ConfigManager {
             } catch (IOException e) {
                 ScreenshotRelocatorClient.LOGGER.error("Failed to load screenshot reloader config!", e);
                 return;
-            }
-            if (Objects.equals(config.customScreenshotPath, getDefaultOsPath())) {
-                config.customScreenshotPath = "";
-                saveConfig();
             }
         } else {
             saveConfig();

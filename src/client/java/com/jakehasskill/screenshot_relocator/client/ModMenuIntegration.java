@@ -5,7 +5,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 
 public class ModMenuIntegration implements ModMenuApi{
     @Override
@@ -13,13 +13,13 @@ public class ModMenuIntegration implements ModMenuApi{
         return parent ->  {
             ConfigBuilder builder = ConfigBuilder.create()
                     .setParentScreen(parent)
-                    .setTitle(Text.literal("Screenshot Relocator Settings"));
+                    .setTitle(Component.literal("Screenshot Relocator Settings"));
 
-            ConfigCategory general = builder.getOrCreateCategory(Text.literal("General"));
+            ConfigCategory general = builder.getOrCreateCategory(Component.literal("General"));
             ConfigEntryBuilder entryBuilder = builder.entryBuilder();
-            general.addEntry(entryBuilder.startStrField(Text.literal("Screenshot Folder Path"), ConfigManager.config.customScreenshotPath)
+            general.addEntry(entryBuilder.startStrField(Component.literal("Screenshot Folder Path"), ConfigManager.config.customScreenshotPath)
                     .setDefaultValue("")
-                    .setTooltip(Text.literal("Absolute path for where screenshots are saved. Leave blank for your OS default."))
+                    .setTooltip(Component.literal("Absolute path for where screenshots are saved. Leave blank for your OS default."))
                     .setSaveConsumer(newValue -> ConfigManager.config.customScreenshotPath = newValue)
                     .build());
 
